@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="zxx">
+
+<!-- Mirrored from demo.dashboardpack.com/cryptocurrency-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Feb 2023 06:03:46 GMT -->
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Admin Panel</title>
+    <link rel="icon" href="" type="">
+
+    <link rel="stylesheet" href="~/component/admin_component/js/Product.js" />
+
+    <link rel="stylesheet" href="~/component/admin_component/css/bootstrap1.min.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/themefy_icon/themify-icons.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/niceselect/css/nice-select.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/owl_carousel/css/owl.carousel.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/gijgo/gijgo.min.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/font_awesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/component/admin_component/vendors/tagsinput/tagsinput.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/datepicker/date-picker.css" />
+    <link rel="stylesheet" href="~/component/admin_component/vendors/vectormap-home/vectormap-2.0.2.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/scroll/scrollable.css" />
+
+    <link rel="stylesheet"
+          href="~/component/admin_component/vendors/datatable/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet"
+          href="~/component/admin_component/vendors/datatable/css/responsive.dataTables.min.css" />
+    <link rel="stylesheet"
+        href="~/component/admin_component/vendors/datatable/css/buttons.dataTables.min.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/text_editor/summernote-bs4.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/morris/morris.css">
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/material_icon/material-icons.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/css/metisMenu.css">
+
+    <link rel="stylesheet" href="~/component/admin_component/css/style1.css" />
+    <link rel="stylesheet" href="~/component/admin_component/css/colors/default.css" id="colorSkinCSS">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body class="crm_body_bg">
+
+
+    <nav class="sidebar dark_sidebar" style="background: #95a12b">
+        <div class="logo d-flex justify-content-between">
+            <a class="large_logo" href="index-2.html">
+                <img src="~/component/admin_component/img/bitebuzz3-nobg.png" alt="">
+            </a> <a class="small_logo"
+                    href="index-2.html"><img src="~/component/admin_component/img/mini_logo.png" alt=""></a>
+            <div class="sidebar_close_icon d-lg-none">
+                <i class="ti-close"></i>
+            </div>
+        </div>
+        <ul id="sidebar_menu">
+            <li class="">
+                <a class="has-arrow" href="@Url.Action("Index","Admin")" aria-expanded="false" style="background: #858f31">
+                    <div class="nav_icon_small">
+                        <img src="~/component/admin_component/img/SVG/dashboard.svg" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Dashboard </span>
+                    </div>
+                </a>
+                <!-- <ul>
+                    <li><a href="index_2.html">Default</a></li>
+                    <li><a href="index_3.html">Light Sidebar</a></li>
+                    <li><a href="index-2.html">Dark Sidebar</a></li>
+                </ul> -->
+            </li>
+
+            <li class="">
+                <a class="has-arrow" href="@Url.Action("User_Details","Admin")" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="~/component/admin_component/img/SVG/user.svg" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>User Details </span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a class="has-arrow" href="@Url.Action("District","Admin")" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="~/component/admin_component/img/SVG/location-arrow.svg" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>District </span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a class="has-arrow" href="@Url.Action("City","Admin")" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="~/component/admin_component/img/SVG/location-pin.svg" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>City </span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a class="has-arrow" href="@Url.Action("Product","Admin")" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="~/component/admin_component/img/SVG/list-ol.svg" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Product</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a class="has-arrow" href="@Url.Action("Orders","Admin")" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="~/component/admin_component/img/SVG/alert.svg" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Requests</span>
+                    </div>
+                </a>
+            </li>
+    </nav>
+
+    <section class="main_content dashboard_part large_header_bg">
+
+        <div class="container-fluid g-0">
+            <div class="row">
+                <div class="col-lg-12 p-0 ">
+                    <div class="header_iner d-flex justify-content-between align-items-center" style="background-color:green; }
+">
+                        <div class="sidebar_icon d-lg-none">
+                            <i class="ti-menu"></i>
+                        </div>
+                        <div class="line_icon open_miniSide d-none d-lg-block">
+                            <img src="~/component/admin_component/img/line_img.png" alt="">
+                        </div>
+                        <div class="header_right d-flex justify-content-between align-items-center">
+                            <div class="header_notification_warp d-flex align-items-center">
+
+                            </div>
+                            <div class="profile_info d-flex align-items-center">
+                                <div class="profile_thumb mr_20">
+                                    <img src="~/component/admin_component/img/profile/Shubham_kumar.jpg" alt="#">
+                                </div>
+                                <div class="author_name">
+                                    <h4 class="f_s_15 f_w_500 mb-0">Shubham Kumar</h4>
+                                    <p class="f_s_12 f_w_400">Admin</p>
+                                </div>
+                                <div class="profile_info_iner">
+                                    <div class="profile_author_name">
+                                        <p>Admin</p>
+                                    </div>
+                                    <div class="profile_info_details">
+                                        <a href="#">My Profile </a> <a href="#">Settings</a> <a href="@Url.Action("Logout","Admin")">Log Out</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            @RenderBody()
+        </div>
+
+    </section>
+    @RenderSection("scripts", required: false)
+
+    <script src="~/component/admin_component/js/jquery1-3.4.1.min.js"></script>
+
+    <script src="~/component/admin_component/js/popper1.min.js"></script>
+
+    <script src="~/component/admin_component/js/bootstrap1.min.js"></script>
+
+    <script src="~/component/admin_component/js/metisMenu.js"></script>
+
+    <script src="~/component/admin_component/vendors/count_up/jquery.waypoints.min.js"></script>
+
+    <script src="~/component/admin_component/vendors/chartlist/Chart.min.js"></script>
+
+    <script src="~/component/admin_component/vendors/count_up/jquery.counterup.min.js"></script>
+
+    <script src="~/component/admin_component/vendors/niceselect/js/jquery.nice-select.min.js"></script>
+
+    <script src="~/component/admin_component/vendors/owl_carousel/js/owl.carousel.min.js"></script>
+
+    <script src="~/component/admin_component/vendors/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/component/admin_component/vendors/datatable/js/dataTables.responsive.min.js"></script>
+    <script src="~/component/admin_component/vendors/datatable/js/dataTables.buttons.min.js"></script>
+    <script src="~/component/admin_component/vendors/datatable/js/buttons.flash.min.js"></script>
+    <script src="~/component/admin_component/vendors/datatable/js/jszip.min.js"></script>
+    <script src="~/component/admin_component/vendors/datatable/js/pdfmake.min.js"></script>
+    <script src="~/component/admin_component/vendors/datatable/js/vfs_fonts.js"></script>
+    <script src="~/component/admin_component/vendors/datatable/js/buttons.html5.min.js"></script>
+    <script src="~/component/admin_component/vendors/datatable/js/buttons.print.min.js"></script>
+
+    <script src="~/component/admin_component/vendors/datepicker/datepicker.js"></script>
+    <script src="~/component/admin_component/vendors/datepicker/datepicker.en.js"></script>
+    <script src="~/component/admin_component/vendors/datepicker/datepicker.custom.js"></script>
+    <script src="~/component/admin_component/js/chart.min.js"></script>
+    <script src="~/component/admin_component/vendors/chartjs/roundedBar.min.js"></script>
+
+    <script src="~/component/admin_component/vendors/progressbar/jquery.barfiller.js"></script>
+
+    <script src="~/component/admin_component/vendors/tagsinput/tagsinput.js"></script>
+
+    <script src="~/component/admin_component/vendors/text_editor/summernote-bs4.js"></script>
+    <script src="~/component/admin_component/vendors/am_chart/amcharts.js"></script>
+
+    <script src="~/component/admin_component/vendors/scroll/perfect-scrollbar.min.js"></script>
+    <script src="~/component/admin_component/vendors/scroll/scrollable-custom.js"></script>
+
+    <script src="~/component/admin_component/vendors/vectormap-home/vectormap-2.0.2.min.js"></script>
+    <script src="~/component/admin_component/vendors/vectormap-home/vectormap-world-mill-en.js"></script>
+
+    <script src="~/component/admin_component/vendors/apex_chart/apex-chart2.js"></script>
+    <script src="~/component/admin_component/vendors/apex_chart/apex_dashboard.js"></script>
+
+    <script src="~/component/admin_component/vendors/chart_am/core.js"></script>
+    <script src="~/component/admin_component/vendors/chart_am/charts.js"></script>
+    <script src="~/component/admin_component/vendors/chart_am/animated.js"></script>
+    <script src="~/component/admin_component/vendors/chart_am/kelly.js"></script>
+    <script src="~/component/admin_component/vendors/chart_am/chart-custom.js"></script>
+
+    <script src="~/component/admin_component/js/dashboard_init.js"></script>
+    @*<script src="~/component/admin_component/js/custom.js"></script>*@
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    @*<link href="https://cdn.datatables.net/v/dt/dt-2.1.4/datatables.min.css" rel="stylesheet">*@
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css" rel="stylesheet">
+
+</body>
+
+
+</html>
+<title>@ViewBag.Title</title>

@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<div class="main_content_iner overly_inner ">
+    <div class="container-fluid p-0 ">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+                    <div class="page_title_left">
+                        <h3 class="mb-0">Order Requests</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card" style="background:#69e2e1">
+                    <div class="card-body">
+                        <table id="ordersTable" class="display" style="background-color:red">
+                            <thead>
+                                <tr>
+                                    <th>Sno.</th>
+                                    <th>Order Id</th>
+                                    <th>User Id</th>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include DataTables -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        AllOrdersLists();
+    });
+        var DataTable = null;
+        function AllOrdersLists() {
+            DataTable = $("#ordersTable").DataTable({ // Correct capitalization
+                destroy: true,
+                "ajax": {
+                    "type": "GET",
+                    "url": "/Admin/GetOrderRequests",
+                    "datatype": "json"
+                },
+                "columns": [
+                    {
+                        "render": function (data, type, full, meta) {
+                            return meta.row + 1
+                        }
+                    },
+                    { "data": "orderId" },
+                    { "data": "userId" },
+                    { "data": "productName" },
+                    { "data": "price" },
+                    { "data": "quantity" },
+                    {
+                        "data": "orderId", "render": function (data) {
+                            return "<a class = 'btn btn-primary btn-xs' onclick = editrow(" + data + ")> Accept </a> <a class = 'btn btn-danger btn-xs' onclick = deleterow(" + data + ")> Reject </a>";
+                        },
+                     orderable: false
+                    },
+                ],
+                "language": {
+                    "emptyTable": "Data not found"
+                }
+            });
+        }
+    
+</script>
+
+
+
+
+

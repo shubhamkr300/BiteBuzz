@@ -1,0 +1,98 @@
+﻿@model FoodDeliveryApplication.Models.UserModel
+
+@{
+    ViewBag.Title = "User_Details";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<div class="main_content_iner overly_inner ">
+    <div class="container-fluid p-0 ">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+                    <div class="page_title_left">
+                        <h3 class="mb-0">District</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-10">
+                <div class="card" style="background:#69e2e1">
+                    <div class="card-body">
+                        <h3>Users List</h3>
+                        <br>
+                        <div class="col-md-10">
+                            <table id="userTable" class="display" style="background-color:red">
+                                <thead>
+                                    <tr>
+                                        <th>Sno.</th>
+                                        <th>UserId</th>
+                                        <th>Name</th>
+                                        <th>Gender</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Password</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /><br />
+        <div class="col-md-5">
+            <a href="@Url.Action("Menu", "Web")" class="btn_1 full_width text-center">Back to menu</a>
+        </div>
+    </div>
+</div>
+
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include DataTables -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        AllUserLists();
+    });
+        var DataTable = null;
+        function AllUserLists() {
+            DataTable = $("#userTable").DataTable({ // Correct capitalization
+                destroy: true,
+                "ajax": {
+                    "type": "GET",
+                    "url": "/Admin/GetUserDetails",
+                    "datatype": "json"
+                },
+                "columns": [
+                    {
+                        "render": function (data, type, full, meta) {
+                            return meta.row + 1
+                        }
+                    },
+                    { "data": "UserId" },
+                    { "data": "Name" },
+                    { "data": "Gender" },
+                    { "data": "Email" },
+                    { "data": "Phone" },
+                    { "data": "Password" }
+
+                ],
+                "language": {
+                    "emptyTable": "Data not found"
+                }
+            });
+        }
+    
+</script>
+
+
+
+

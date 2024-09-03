@@ -1,0 +1,116 @@
+﻿@model FoodDeliveryApplication.Models.AdminLoginModel
+
+@{
+    ViewBag.Title = "AdminLogin";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Admin Login</title>
+    <link rel="icon" href="~/component/admin_component/img/mini_logo.png" type="image/png">
+
+    <link rel="stylesheet" href="~/component/admin_component/css/bootstrap1.min.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/themefy_icon/themify-icons.css" />
+    <link rel="stylesheet" href="~/component/admin_component/vendors/font_awesome/css/all.min.css" />
+
+
+    <link rel="stylesheet" href="~/component/admin_component/vendors/scroll/scrollable.css" />
+
+    <link rel="stylesheet" href="~/component/admin_component/css/metisMenu.css">
+
+    <link rel="stylesheet" href="~/component/admin_component/css/style1.css" />
+    <link rel="stylesheet" href="~/component/admin_component/css/colors/default.css" id="colorSkinCSS">
+</head>
+<body class="crm_body_bg">
+
+    <section class="main_content dashboard_part large_header_bg"
+             style="padding-left: 0px !important">
+
+        <div class="main_content_iner ">
+            <div class="container-fluid p-0">
+
+                <div class="col-lg-12">
+                    <div class="white_box mb_30">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-4">
+                                @using (Ajax.BeginForm("AdminLogin", "Admin", new AjaxOptions { OnSuccess = "Success", OnFailure = "Fail" }, new { id = "formsubmit", @class = "form-horizontal", enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="modal-content cs_modal">
+                                        <div class="modal-header justify-content-center theme_bg_1">
+                                            <h5 class="modal-title text_white">Log in</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            
+                                                <div class="">
+
+                                                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Username" } })
+                                                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+
+                                                </div>
+                                                <div class="">
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Username" } })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                                                </div>
+                                                <button type="Submit" class="btn_1 full_width text-center">Login</button>
+                                                
+                                            
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_part">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer_iner text-center">
+                            <p>
+                                2024 © Bite Buzz - Designed by Brightcode Software Services<a href="#">
+                                    <i class="ti-heart"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+
+    <script src="~/component/admin_component/js/jquery1-3.4.1.min.js"></script>
+
+    <script src="~/component/admin_component/js/popper1.min.js"></script>
+
+    <script src="~/component/admin_component/js/bootstrap1.min.js"></script>
+
+    <script src="~/component/admin_component/js/metisMenu.js"></script>
+
+    <script src="~/component/admin_component/vendors/scroll/perfect-scrollbar.min.js"></script>
+    <script src="~/component/admin_component/vendors/scroll/scrollable-custom.js"></script>
+
+    @*<script src="~/component/admin_component/js/custom.js"></script>*@
+</body>
+</html>
+
+

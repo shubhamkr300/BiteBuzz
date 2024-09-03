@@ -1,0 +1,36 @@
+@media  screen and (max-width: 1024px) {
+    #log {
+        margin-left: 50px;
+    }
+}
+@media  screen and (max-width: 991px) {
+    .nav-toggle{
+        display: block;
+        margin-right: 20px;
+    }
+
+
+    .navbar-nav{
+        overflow: initial;
+    }
+
+    #navbarSupportedContent {
+        position: absolute;
+    }
+   
+
+    .navbar-nav ul{
+        flex-direction:column;
+    }
+
+    #services {
+        flex-wrap: wrap;
+    }
+
+    .container{
+        overflow: hidden;
+    }
+
+    
+
+}

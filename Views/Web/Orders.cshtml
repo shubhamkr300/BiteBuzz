@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_LayoutPagewebsite.cshtml";
+}
+
+
+<section id="details">
+    <div class="container-fluid mt-5">
+        <div class="row" id="1">
+            <div class="col-md-12 mt-5">
+                <div class="card" style="background:#69e2e1">
+                    <div class="card-body" id="tab">
+                        <h3>My Orders</h3>
+                        <br>
+                        <div class="col-md-12">
+                            <table id="orderTable" class="display" style="background-color:red">
+                                <thead>
+                                    <tr>
+                                        <th>Sno.</th>
+                                        <th>Order Id</th>
+                                        <th>Item Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /><br />
+    </div>
+</section>
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include DataTables -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+<script>
+                    $(document).ready(function () {
+                        OrderList();
+
+                    });
+                    var DataTable = null;
+                    function OrderList() {
+                        DataTable = $("#orderTable").DataTable({ // Correct capitalization
+                            destroy: true,
+                            "ajax": {
+                                "type": "GET",
+                                "url": "/Web/GetOrderList",
+                                "datatype": "json"
+                            },
+                            "columns": [
+                                {
+                                    "render": function (data, type, full, meta) {
+                                        return meta.row + 1
+                                    }
+                                },
+                                { "data": "cartId" },
+                                { "data": "productName" },
+                                { "data": "price" },
+                                { "data": "quantity" },
+                                { "data": "amount" },
+                                
+                            ],
+                            "language": {
+                                "emptyTable": "You haven't played any order"
+                            },
+                        });
+                    }
+
+</script>
+
+
+
+
+
+

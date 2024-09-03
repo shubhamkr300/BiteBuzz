@@ -1,0 +1,879 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FDA1A816-6C8C-4663-9F11-6504B311B414}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FoodDeliveryApplication</RootNamespace>
+    <AssemblyName>FoodDeliveryApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.Data.3.3.0\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.WebData.3.3.0\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="component\admin_component\css\bootstrap1.min.css" />
+    <Content Include="component\admin_component\css\colors\default.css" />
+    <Content Include="component\admin_component\css\metisMenu.css" />
+    <Content Include="component\admin_component\css\preloader.html" />
+    <Content Include="component\admin_component\css\style1.css" />
+    <Content Include="component\admin_component\img\bak_hovers\sad.html" />
+    <Content Include="component\admin_component\img\banner.png" />
+    <Content Include="component\admin_component\img\bitebuzz3-nobg.png" />
+    <Content Include="component\admin_component\img\card\card-2.png" />
+    <Content Include="component\admin_component\img\card\card-5.png" />
+    <Content Include="component\admin_component\img\crm\bg.svg" />
+    <Content Include="component\admin_component\img\currency\1.svg" />
+    <Content Include="component\admin_component\img\currency\2.svg" />
+    <Content Include="component\admin_component\img\currency\3.svg" />
+    <Content Include="component\admin_component\img\currency\4.svg" />
+    <Content Include="component\admin_component\img\customers\1.png" />
+    <Content Include="component\admin_component\img\default-skin\default-skin.png" />
+    <Content Include="component\admin_component\img\default-skin\default-skin.svg" />
+    <Content Include="component\admin_component\img\engage_bg.svg" />
+    <Content Include="component\admin_component\img\icon\bell.svg" />
+    <Content Include="component\admin_component\img\icon\calender_icon.svg" />
+    <Content Include="component\admin_component\img\icon\msg.svg" />
+    <Content Include="component\admin_component\img\line_img.png" />
+    <Content Include="component\admin_component\img\logo.png" />
+    <Content Include="component\admin_component\img\logo_white.png" />
+    <Content Include="component\admin_component\img\menu-icon\1.svg" />
+    <Content Include="component\admin_component\img\menu-icon\14.svg" />
+    <Content Include="component\admin_component\img\menu-icon\16.svg" />
+    <Content Include="component\admin_component\img\menu-icon\17.svg" />
+    <Content Include="component\admin_component\img\menu-icon\18.svg" />
+    <Content Include="component\admin_component\img\menu-icon\2.svg" />
+    <Content Include="component\admin_component\img\menu-icon\3.svg" />
+    <Content Include="component\admin_component\img\menu-icon\4.svg" />
+    <Content Include="component\admin_component\img\menu-icon\5.svg" />
+    <Content Include="component\admin_component\img\menu-icon\6.svg" />
+    <Content Include="component\admin_component\img\menu-icon\7.svg" />
+    <Content Include="component\admin_component\img\menu-icon\8.svg" />
+    <Content Include="component\admin_component\img\menu-icon\forms.svg" />
+    <Content Include="component\admin_component\img\menu-icon\General.svg" />
+    <Content Include="component\admin_component\img\menu-icon\icon.svg" />
+    <Content Include="component\admin_component\img\menu-icon\Mail_Box.svg" />
+    <Content Include="component\admin_component\img\menu-icon\map.svg" />
+    <Content Include="component\admin_component\img\menu-icon\Pages.svg" />
+    <Content Include="component\admin_component\img\messages\1.jpg" />
+    <Content Include="component\admin_component\img\messages\1.png" />
+    <Content Include="component\admin_component\img\messages\2.jpg" />
+    <Content Include="component\admin_component\img\messages\3.jpg" />
+    <Content Include="component\admin_component\img\messages\4.jpg" />
+    <Content Include="component\admin_component\img\mini_logo.png" />
+    <Content Include="component\admin_component\img\news\1.svg" />
+    <Content Include="component\admin_component\img\news\2.svg" />
+    <Content Include="component\admin_component\img\plane_thumb.svg" />
+    <Content Include="component\admin_component\img\products\01.png" />
+    <Content Include="component\admin_component\img\products\02.png" />
+    <Content Include="component\admin_component\img\products\img-1.png" />
+    <Content Include="component\admin_component\img\products\img-2.png" />
+    <Content Include="component\admin_component\img\products\img-4.png" />
+    <Content Include="component\admin_component\img\products\img-5.png" />
+    <Content Include="component\admin_component\img\profilebox\1.jpg" />
+    <Content Include="component\admin_component\img\profilebox\2.jpg" />
+    <Content Include="component\admin_component\img\profilebox\3.jpg" />
+    <Content Include="component\admin_component\img\profilebox\7.jpg" />
+    <Content Include="component\admin_component\img\profilebox\8.jpg" />
+    <Content Include="component\admin_component\img\profilebox\9.jpg" />
+    <Content Include="component\admin_component\img\profile\1.png" />
+    <Content Include="component\admin_component\img\profile\2.png" />
+    <Content Include="component\admin_component\img\profile\3.png" />
+    <Content Include="component\admin_component\img\profile\Shubham_kumar.jpg" />
+    <Content Include="component\admin_component\img\progress\design-progress-red.html" />
+    <Content Include="component\admin_component\img\progress\design-progress-yellow.html" />
+    <Content Include="component\admin_component\img\progress\progress-bg.html" />
+    <Content Include="component\admin_component\img\pro_complete.png" />
+    <Content Include="component\admin_component\img\shape_2.svg" />
+    <Content Include="component\admin_component\img\staf\1.png" />
+    <Content Include="component\admin_component\img\staf\2.png" />
+    <Content Include="component\admin_component\img\staf\3.png" />
+    <Content Include="component\admin_component\img\staf\4.png" />
+    <Content Include="component\admin_component\img\staf\5.png" />
+    <Content Include="component\admin_component\img\SVG\agenda.svg" />
+    <Content Include="component\admin_component\img\SVG\alarm-clock.svg" />
+    <Content Include="component\admin_component\img\SVG\alert.svg" />
+    <Content Include="component\admin_component\img\SVG\align-center.svg" />
+    <Content Include="component\admin_component\img\SVG\align-justify.svg" />
+    <Content Include="component\admin_component\img\SVG\align-left.svg" />
+    <Content Include="component\admin_component\img\SVG\align-right.svg" />
+    <Content Include="component\admin_component\img\SVG\anchor.svg" />
+    <Content Include="component\admin_component\img\SVG\android.svg" />
+    <Content Include="component\admin_component\img\SVG\angle-double-down.svg" />
+    <Content Include="component\admin_component\img\SVG\angle-double-left.svg" />
+    <Content Include="component\admin_component\img\SVG\angle-double-right.svg" />
+    <Content Include="component\admin_component\img\SVG\angle-double-up.svg" />
+    <Content Include="component\admin_component\img\SVG\angle-down.svg" />
+    <Content Include="component\admin_component\img\SVG\angle-left.svg" />
+    <Content Include="component\admin_component\img\SVG\angle-right.svg" />
+    <Content Include="component\admin_component\img\SVG\angle-up.svg" />
+    <Content Include="component\admin_component\img\SVG\announcement.svg" />
+    <Content Include="component\admin_component\img\SVG\apple.svg" />
+    <Content Include="component\admin_component\img\SVG\archive.svg" />
+    <Content Include="component\admin_component\img\SVG\arrow-circle-down.svg" />
+    <Content Include="component\admin_component\img\SVG\arrow-circle-left.svg" />
+    <Content Include="component\admin_component\img\SVG\arrow-circle-right.svg" />
+    <Content Include="component\admin_component\img\SVG\arrow-circle-up.svg" />
+    <Content Include="component\admin_component\img\SVG\arrow-down.svg" />
+    <Content Include="component\admin_component\img\SVG\arrow-left.svg" />
+    <Content Include="component\admin_component\img\SVG\arrow-right.svg" />
+    <Content Include="component\admin_component\img\SVG\arrow-top-left.svg" />
+    <Content Include="component\admin_component\img\SVG\arrow-top-right.svg" />
+    <Content Include="component\admin_component\img\SVG\arrow-up.svg" />
+    <Content Include="component\admin_component\img\SVG\arrow.svg" />
+    <Content Include="component\admin_component\img\SVG\arrows-corner.svg" />
+    <Content Include="component\admin_component\img\SVG\arrows-horizontal.svg" />
+    <Content Include="component\admin_component\img\SVG\arrows-vertical.svg" />
+    <Content Include="component\admin_component\img\SVG\back-left.svg" />
+    <Content Include="component\admin_component\img\SVG\back-right.svg" />
+    <Content Include="component\admin_component\img\SVG\bag.svg" />
+    <Content Include="component\admin_component\img\SVG\bar-chart-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\bar-chart.svg" />
+    <Content Include="component\admin_component\img\SVG\basketball.svg" />
+    <Content Include="component\admin_component\img\SVG\bell.svg" />
+    <Content Include="component\admin_component\img\SVG\blackboard.svg" />
+    <Content Include="component\admin_component\img\SVG\bolt-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\bolt.svg" />
+    <Content Include="component\admin_component\img\SVG\book.svg" />
+    <Content Include="component\admin_component\img\SVG\bookmark-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\bookmark.svg" />
+    <Content Include="component\admin_component\img\SVG\briefcase.svg" />
+    <Content Include="component\admin_component\img\SVG\brush-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\brush.svg" />
+    <Content Include="component\admin_component\img\SVG\calendar.svg" />
+    <Content Include="component\admin_component\img\SVG\camera.svg" />
+    <Content Include="component\admin_component\img\SVG\car.svg" />
+    <Content Include="component\admin_component\img\SVG\check-box.svg" />
+    <Content Include="component\admin_component\img\SVG\check.svg" />
+    <Content Include="component\admin_component\img\SVG\clip.svg" />
+    <Content Include="component\admin_component\img\SVG\clipboard.svg" />
+    <Content Include="component\admin_component\img\SVG\close.svg" />
+    <Content Include="component\admin_component\img\SVG\cloud-down.svg" />
+    <Content Include="component\admin_component\img\SVG\cloud-up.svg" />
+    <Content Include="component\admin_component\img\SVG\cloud.svg" />
+    <Content Include="component\admin_component\img\SVG\comment-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\comment.svg" />
+    <Content Include="component\admin_component\img\SVG\comments-smiley.svg" />
+    <Content Include="component\admin_component\img\SVG\comments.svg" />
+    <Content Include="component\admin_component\img\SVG\control-backward.svg" />
+    <Content Include="component\admin_component\img\SVG\control-eject.svg" />
+    <Content Include="component\admin_component\img\SVG\control-forward.svg" />
+    <Content Include="component\admin_component\img\SVG\control-pause.svg" />
+    <Content Include="component\admin_component\img\SVG\control-play.svg" />
+    <Content Include="component\admin_component\img\SVG\control-record.svg" />
+    <Content Include="component\admin_component\img\SVG\control-shuffle.svg" />
+    <Content Include="component\admin_component\img\SVG\control-skip-backward.svg" />
+    <Content Include="component\admin_component\img\SVG\control-skip-forward.svg" />
+    <Content Include="component\admin_component\img\SVG\control-stop.svg" />
+    <Content Include="component\admin_component\img\SVG\credit-card.svg" />
+    <Content Include="component\admin_component\img\SVG\crown.svg" />
+    <Content Include="component\admin_component\img\SVG\css3.svg" />
+    <Content Include="component\admin_component\img\SVG\cup.svg" />
+    <Content Include="component\admin_component\img\SVG\cut.svg" />
+    <Content Include="component\admin_component\img\SVG\dashboard.svg" />
+    <Content Include="component\admin_component\img\SVG\desktop.svg" />
+    <Content Include="component\admin_component\img\SVG\direction-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\direction.svg" />
+    <Content Include="component\admin_component\img\SVG\download.svg" />
+    <Content Include="component\admin_component\img\SVG\dribbble.svg" />
+    <Content Include="component\admin_component\img\SVG\dropbox-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\dropbox.svg" />
+    <Content Include="component\admin_component\img\SVG\drupal.svg" />
+    <Content Include="component\admin_component\img\SVG\email.svg" />
+    <Content Include="component\admin_component\img\SVG\envelope.svg" />
+    <Content Include="component\admin_component\img\SVG\eraser.svg" />
+    <Content Include="component\admin_component\img\SVG\exchange-vertical.svg" />
+    <Content Include="component\admin_component\img\SVG\export.svg" />
+    <Content Include="component\admin_component\img\SVG\eye.svg" />
+    <Content Include="component\admin_component\img\SVG\face-sad.svg" />
+    <Content Include="component\admin_component\img\SVG\face-smile.svg" />
+    <Content Include="component\admin_component\img\SVG\facebook.svg" />
+    <Content Include="component\admin_component\img\SVG\file.svg" />
+    <Content Include="component\admin_component\img\SVG\files.svg" />
+    <Content Include="component\admin_component\img\SVG\filter.svg" />
+    <Content Include="component\admin_component\img\SVG\flag-alt-2.svg" />
+    <Content Include="component\admin_component\img\SVG\flag-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\flag.svg" />
+    <Content Include="component\admin_component\img\SVG\flickr-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\flickr.svg" />
+    <Content Include="component\admin_component\img\SVG\folder.svg" />
+    <Content Include="component\admin_component\img\SVG\fullscreen.svg" />
+    <Content Include="component\admin_component\img\SVG\gallery.svg" />
+    <Content Include="component\admin_component\img\SVG\game.svg" />
+    <Content Include="component\admin_component\img\SVG\gift.svg" />
+    <Content Include="component\admin_component\img\SVG\github.svg" />
+    <Content Include="component\admin_component\img\SVG\google.svg" />
+    <Content Include="component\admin_component\img\SVG\hand-drag.svg" />
+    <Content Include="component\admin_component\img\SVG\hand-open.svg" />
+    <Content Include="component\admin_component\img\SVG\hand-point-down.svg" />
+    <Content Include="component\admin_component\img\SVG\hand-point-left.svg" />
+    <Content Include="component\admin_component\img\SVG\hand-point-right.svg" />
+    <Content Include="component\admin_component\img\SVG\hand-point-up.svg" />
+    <Content Include="component\admin_component\img\SVG\hand-stop.svg" />
+    <Content Include="component\admin_component\img\SVG\harddrive.svg" />
+    <Content Include="component\admin_component\img\SVG\harddrives.svg" />
+    <Content Include="component\admin_component\img\SVG\headphone-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\headphone.svg" />
+    <Content Include="component\admin_component\img\SVG\heart-broken.svg" />
+    <Content Include="component\admin_component\img\SVG\heart.svg" />
+    <Content Include="component\admin_component\img\SVG\help-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\help.svg" />
+    <Content Include="component\admin_component\img\SVG\home.svg" />
+    <Content Include="component\admin_component\img\SVG\html5.svg" />
+    <Content Include="component\admin_component\img\SVG\hummer.svg" />
+    <Content Include="component\admin_component\img\SVG\id-badge.svg" />
+    <Content Include="component\admin_component\img\SVG\image.svg" />
+    <Content Include="component\admin_component\img\SVG\import.svg" />
+    <Content Include="component\admin_component\img\SVG\infinite.svg" />
+    <Content Include="component\admin_component\img\SVG\info-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\info.svg" />
+    <Content Include="component\admin_component\img\SVG\ink-pen.svg" />
+    <Content Include="component\admin_component\img\SVG\instagram.svg" />
+    <Content Include="component\admin_component\img\SVG\Italic.svg" />
+    <Content Include="component\admin_component\img\SVG\joomla.svg" />
+    <Content Include="component\admin_component\img\SVG\jsfiddle.svg" />
+    <Content Include="component\admin_component\img\SVG\key.svg" />
+    <Content Include="component\admin_component\img\SVG\layers-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layers.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-accordion-list.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-accordion-merged.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-accordion-separated.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-column2-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-column2.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-column3-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-column3.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-column4-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-column4.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-cta-btn-left.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-cta-btn-right.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-cta-center.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-cta-left.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-cta-right.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-grid2-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-grid2-thumb.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-grid2.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-grid3-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-grid3.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-grid4-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-grid4.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-line-solid.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-list-large-image.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-list-post.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-list-thumb-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-list-thumb.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-media-center-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-media-center.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-media-left-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-media-left.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-media-overlay-alt-2.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-media-overlay-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-media-overlay.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-media-right-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-media-right.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-menu-full.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-menu-separated.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-menu-v.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-menu.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-placeholder.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-sidebar-2.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-sidebar-left.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-sidebar-none.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-sidebar-right.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-slider-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-slider.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-tab-min.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-tab-v.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-tab-window.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-tab.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-width-default-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-width-default.svg" />
+    <Content Include="component\admin_component\img\SVG\layout-width-full.svg" />
+    <Content Include="component\admin_component\img\SVG\layout.svg" />
+    <Content Include="component\admin_component\img\SVG\light-bulb.svg" />
+    <Content Include="component\admin_component\img\SVG\line-dashed.svg" />
+    <Content Include="component\admin_component\img\SVG\line-dotted.svg" />
+    <Content Include="component\admin_component\img\SVG\line-double.svg" />
+    <Content Include="component\admin_component\img\SVG\link.svg" />
+    <Content Include="component\admin_component\img\SVG\linkedin.svg" />
+    <Content Include="component\admin_component\img\SVG\linux.svg" />
+    <Content Include="component\admin_component\img\SVG\list-ol.svg" />
+    <Content Include="component\admin_component\img\SVG\list.svg" />
+    <Content Include="component\admin_component\img\SVG\location-arrow.svg" />
+    <Content Include="component\admin_component\img\SVG\location-pin.svg" />
+    <Content Include="component\admin_component\img\SVG\lock.svg" />
+    <Content Include="component\admin_component\img\SVG\loop.svg" />
+    <Content Include="component\admin_component\img\SVG\magnet.svg" />
+    <Content Include="component\admin_component\img\SVG\map-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\map.svg" />
+    <Content Include="component\admin_component\img\SVG\marker-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\marker.svg" />
+    <Content Include="component\admin_component\img\SVG\medall-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\medall.svg" />
+    <Content Include="component\admin_component\img\SVG\menu-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\menu.svg" />
+    <Content Include="component\admin_component\img\SVG\microphone-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\microphone.svg" />
+    <Content Include="component\admin_component\img\SVG\microsoft-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\microsoft.svg" />
+    <Content Include="component\admin_component\img\SVG\minus.svg" />
+    <Content Include="component\admin_component\img\SVG\mobile.svg" />
+    <Content Include="component\admin_component\img\SVG\money.svg" />
+    <Content Include="component\admin_component\img\SVG\more-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\more.svg" />
+    <Content Include="component\admin_component\img\SVG\mouse-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\mouse.svg" />
+    <Content Include="component\admin_component\img\SVG\music-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\music.svg" />
+    <Content Include="component\admin_component\img\SVG\na.svg" />
+    <Content Include="component\admin_component\img\SVG\new-window.svg" />
+    <Content Include="component\admin_component\img\SVG\notepad.svg" />
+    <Content Include="component\admin_component\img\SVG\package.svg" />
+    <Content Include="component\admin_component\img\SVG\paint-bucket.svg" />
+    <Content Include="component\admin_component\img\SVG\paint-roller.svg" />
+    <Content Include="component\admin_component\img\SVG\palette.svg" />
+    <Content Include="component\admin_component\img\SVG\panel.svg" />
+    <Content Include="component\admin_component\img\SVG\paragraph.svg" />
+    <Content Include="component\admin_component\img\SVG\pencil-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\pencil-alt2.svg" />
+    <Content Include="component\admin_component\img\SVG\pencil.svg" />
+    <Content Include="component\admin_component\img\SVG\pie-chart.svg" />
+    <Content Include="component\admin_component\img\SVG\pin-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\pin.svg" />
+    <Content Include="component\admin_component\img\SVG\pin2.svg" />
+    <Content Include="component\admin_component\img\SVG\pinterest-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\pinterest.svg" />
+    <Content Include="component\admin_component\img\SVG\plug.svg" />
+    <Content Include="component\admin_component\img\SVG\plus.svg" />
+    <Content Include="component\admin_component\img\SVG\power-off.svg" />
+    <Content Include="component\admin_component\img\SVG\printer.svg" />
+    <Content Include="component\admin_component\img\SVG\pulse.svg" />
+    <Content Include="component\admin_component\img\SVG\quote-left.svg" />
+    <Content Include="component\admin_component\img\SVG\quote-right.svg" />
+    <Content Include="component\admin_component\img\SVG\receipt.svg" />
+    <Content Include="component\admin_component\img\SVG\reddit.svg" />
+    <Content Include="component\admin_component\img\SVG\reload.svg" />
+    <Content Include="component\admin_component\img\SVG\rocket.svg" />
+    <Content Include="component\admin_component\img\SVG\rss-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\rss.svg" />
+    <Content Include="component\admin_component\img\SVG\ruler-alt-2.svg" />
+    <Content Include="component\admin_component\img\SVG\ruler-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\ruler-pencil.svg" />
+    <Content Include="component\admin_component\img\SVG\ruler.svg" />
+    <Content Include="component\admin_component\img\SVG\save-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\save.svg" />
+    <Content Include="component\admin_component\img\SVG\search.svg" />
+    <Content Include="component\admin_component\img\SVG\server.svg" />
+    <Content Include="component\admin_component\img\SVG\settings.svg" />
+    <Content Include="component\admin_component\img\SVG\share-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\share.svg" />
+    <Content Include="component\admin_component\img\SVG\sharethis-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\sharethis.svg" />
+    <Content Include="component\admin_component\img\SVG\shield.svg" />
+    <Content Include="component\admin_component\img\SVG\shift-left-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\shift-left.svg" />
+    <Content Include="component\admin_component\img\SVG\shift-right-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\shift-right.svg" />
+    <Content Include="component\admin_component\img\SVG\shine.svg" />
+    <Content Include="component\admin_component\img\SVG\shopping-cart-full.svg" />
+    <Content Include="component\admin_component\img\SVG\shopping-cart.svg" />
+    <Content Include="component\admin_component\img\SVG\shortcode.svg" />
+    <Content Include="component\admin_component\img\SVG\signal.svg" />
+    <Content Include="component\admin_component\img\SVG\skype.svg" />
+    <Content Include="component\admin_component\img\SVG\slice.svg" />
+    <Content Include="component\admin_component\img\SVG\smallcap.svg" />
+    <Content Include="component\admin_component\img\SVG\soundcloud.svg" />
+    <Content Include="component\admin_component\img\SVG\split-h.svg" />
+    <Content Include="component\admin_component\img\SVG\split-v-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\split-v.svg" />
+    <Content Include="component\admin_component\img\SVG\spray.svg" />
+    <Content Include="component\admin_component\img\SVG\stack-overflow.svg" />
+    <Content Include="component\admin_component\img\SVG\stamp.svg" />
+    <Content Include="component\admin_component\img\SVG\star.svg" />
+    <Content Include="component\admin_component\img\SVG\stats-down.svg" />
+    <Content Include="component\admin_component\img\SVG\stats-up.svg" />
+    <Content Include="component\admin_component\img\SVG\support.svg" />
+    <Content Include="component\admin_component\img\SVG\tablet.svg" />
+    <Content Include="component\admin_component\img\SVG\tag.svg" />
+    <Content Include="component\admin_component\img\SVG\target.svg" />
+    <Content Include="component\admin_component\img\SVG\text.svg" />
+    <Content Include="component\admin_component\img\SVG\themify-favicon-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\themify-favicon.svg" />
+    <Content Include="component\admin_component\img\SVG\themify-logo.svg" />
+    <Content Include="component\admin_component\img\SVG\thought.svg" />
+    <Content Include="component\admin_component\img\SVG\thumb-down.svg" />
+    <Content Include="component\admin_component\img\SVG\thumb-up.svg" />
+    <Content Include="component\admin_component\img\SVG\ticket.svg" />
+    <Content Include="component\admin_component\img\SVG\time.svg" />
+    <Content Include="component\admin_component\img\SVG\timer.svg" />
+    <Content Include="component\admin_component\img\SVG\trash.svg" />
+    <Content Include="component\admin_component\img\SVG\trello.svg" />
+    <Content Include="component\admin_component\img\SVG\truck.svg" />
+    <Content Include="component\admin_component\img\SVG\tumblr-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\tumblr.svg" />
+    <Content Include="component\admin_component\img\SVG\twitter-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\twitter.svg" />
+    <Content Include="component\admin_component\img\SVG\underline.svg" />
+    <Content Include="component\admin_component\img\SVG\unlink.svg" />
+    <Content Include="component\admin_component\img\SVG\unlock.svg" />
+    <Content Include="component\admin_component\img\SVG\upload.svg" />
+    <Content Include="component\admin_component\img\SVG\uppercase.svg" />
+    <Content Include="component\admin_component\img\SVG\user.svg" />
+    <Content Include="component\admin_component\img\SVG\vector.svg" />
+    <Content Include="component\admin_component\img\SVG\video-camera.svg" />
+    <Content Include="component\admin_component\img\SVG\video-clapper.svg" />
+    <Content Include="component\admin_component\img\SVG\view-grid.svg" />
+    <Content Include="component\admin_component\img\SVG\view-list-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\view-list.svg" />
+    <Content Include="component\admin_component\img\SVG\vimeo-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\vimeo.svg" />
+    <Content Include="component\admin_component\img\SVG\volume.svg" />
+    <Content Include="component\admin_component\img\SVG\wallet.svg" />
+    <Content Include="component\admin_component\img\SVG\wand.svg" />
+    <Content Include="component\admin_component\img\SVG\wheelchair.svg" />
+    <Content Include="component\admin_component\img\SVG\widget-alt.svg" />
+    <Content Include="component\admin_component\img\SVG\widget.svg" />
+    <Content Include="component\admin_component\img\SVG\widgetized.svg" />
+    <Content Include="component\admin_component\img\SVG\window.svg" />
+    <Content Include="component\admin_component\img\SVG\wordpress.svg" />
+    <Content Include="component\admin_component\img\SVG\world.svg" />
+    <Content Include="component\admin_component\img\SVG\write.svg" />
+    <Content Include="component\admin_component\img\SVG\yahoo.svg" />
+    <Content Include="component\admin_component\img\SVG\youtube.svg" />
+    <Content Include="component\admin_component\img\SVG\zip.svg" />
+    <Content Include="component\admin_component\img\SVG\zoom-in.svg" />
+    <Content Include="component\admin_component\img\SVG\zoom-out.svg" />
+    <Content Include="component\admin_component\img\tilt\1.jpg" />
+    <Content Include="component\admin_component\img\tilt\2.jpg" />
+    <Content Include="component\admin_component\img\tilt\3.jpg" />
+    <Content Include="component\admin_component\img\tilt\4.jpg" />
+    <Content Include="component\admin_component\img\tilt\5.jpg" />
+    <Content Include="component\admin_component\img\tilt\6.jpg" />
+    <Content Include="component\admin_component\img\tilt\7.jpg" />
+    <Content Include="component\admin_component\img\transfer\1.png" />
+    <Content Include="component\admin_component\img\transfer\2.png" />
+    <Content Include="component\admin_component\img\transfer\3.png" />
+    <Content Include="component\admin_component\img\transfer\4.png" />
+    <Content Include="component\admin_component\img\weather_1.png" />
+    <Content Include="component\admin_component\js\bootstrap1.min.js" />
+    <Content Include="component\admin_component\js\chart.min.js" />
+    <Content Include="component\admin_component\js\ckeditor-classic.js" />
+    <Content Include="component\admin_component\js\custom.js" />
+    <Content Include="component\admin_component\js\dashboard_init.js" />
+    <Content Include="component\admin_component\js\jquery1-3.4.1.min.js" />
+    <Content Include="component\admin_component\js\metisMenu.js" />
+    <Content Include="component\admin_component\js\popper1.min.js" />
+    <Content Include="component\admin_component\vendors\am_chart\amchart-init.js" />
+    <Content Include="component\admin_component\vendors\am_chart\amcharts.js" />
+    <Content Include="component\admin_component\vendors\am_chart\ammap.js" />
+    <Content Include="component\admin_component\vendors\am_chart\amstock.js" />
+    <Content Include="component\admin_component\vendors\am_chart\dataloader.min.js" />
+    <Content Include="component\admin_component\vendors\am_chart\export.min.js" />
+    <Content Include="component\admin_component\vendors\am_chart\pie.js" />
+    <Content Include="component\admin_component\vendors\am_chart\serial.js" />
+    <Content Include="component\admin_component\vendors\am_chart\worldLow.js" />
+    <Content Include="component\admin_component\vendors\animation\tilt\tilt-custom.js" />
+    <Content Include="component\admin_component\vendors\animation\tilt\tilt.jquery.js" />
+    <Content Include="component\admin_component\vendors\animation\wow\animate.css" />
+    <Content Include="component\admin_component\vendors\animation\wow\wow-init.js" />
+    <Content Include="component\admin_component\vendors\animation\wow\wow.min.js" />
+    <Content Include="component\admin_component\vendors\apex_chart\apex-chart2.js" />
+    <Content Include="component\admin_component\vendors\apex_chart\apexcharts.js" />
+    <Content Include="component\admin_component\vendors\apex_chart\apexchart_lists.js" />
+    <Content Include="component\admin_component\vendors\apex_chart\apex_chart_list.js" />
+    <Content Include="component\admin_component\vendors\apex_chart\apex_dashboard.js" />
+    <Content Include="component\admin_component\vendors\apex_chart\bar_active_1.html" />
+    <Content Include="component\admin_component\vendors\calender_js\activation.js" />
+    <Content Include="component\admin_component\vendors\calender_js\core\main.css" />
+    <Content Include="component\admin_component\vendors\calender_js\core\main.js" />
+    <Content Include="component\admin_component\vendors\calender_js\daygrid\main.css" />
+    <Content Include="component\admin_component\vendors\calender_js\daygrid\main.js" />
+    <Content Include="component\admin_component\vendors\calender_js\interaction\main.js" />
+    <Content Include="component\admin_component\vendors\calender_js\list\main.css" />
+    <Content Include="component\admin_component\vendors\calender_js\list\main.js" />
+    <Content Include="component\admin_component\vendors\calender_js\timegrid\main.css" />
+    <Content Include="component\admin_component\vendors\calender_js\timegrid\main.js" />
+    <Content Include="component\admin_component\vendors\chartjs\chartjs_init.js" />
+    <Content Include="component\admin_component\vendors\chartjs\roundedBar.min.js" />
+    <Content Include="component\admin_component\vendors\chartlist\Chart.min.js" />
+    <Content Include="component\admin_component\vendors\chart_am\animated.js" />
+    <Content Include="component\admin_component\vendors\chart_am\chart-custom.js" />
+    <Content Include="component\admin_component\vendors\chart_am\charts.js" />
+    <Content Include="component\admin_component\vendors\chart_am\core.js" />
+    <Content Include="component\admin_component\vendors\chart_am\kelly.js" />
+    <Content Include="component\admin_component\vendors\count_up\jquery.counterup.min.js" />
+    <Content Include="component\admin_component\vendors\count_up\jquery.waypoints.min.js" />
+    <Content Include="component\admin_component\vendors\datatable\css\buttons.dataTables.min.css" />
+    <Content Include="component\admin_component\vendors\datatable\css\jquery.dataTables.min.css" />
+    <Content Include="component\admin_component\vendors\datatable\css\responsive.dataTables.min.css" />
+    <Content Include="component\admin_component\vendors\datatable\images\sort_asc.html" />
+    <Content Include="component\admin_component\vendors\datatable\images\sort_asc_disabled.html" />
+    <Content Include="component\admin_component\vendors\datatable\images\sort_both.html" />
+    <Content Include="component\admin_component\vendors\datatable\images\sort_desc.html" />
+    <Content Include="component\admin_component\vendors\datatable\images\sort_desc_disabled.html" />
+    <Content Include="component\admin_component\vendors\datatable\js\buttons.flash.min.js" />
+    <Content Include="component\admin_component\vendors\datatable\js\buttons.html5.min.js" />
+    <Content Include="component\admin_component\vendors\datatable\js\buttons.print.min.js" />
+    <Content Include="component\admin_component\vendors\datatable\js\dataTables.buttons.min.js" />
+    <Content Include="component\admin_component\vendors\datatable\js\dataTables.responsive.min.js" />
+    <Content Include="component\admin_component\vendors\datatable\js\jquery.dataTables.min.js" />
+    <Content Include="component\admin_component\vendors\datatable\js\jszip.min.js" />
+    <Content Include="component\admin_component\vendors\datatable\js\pdfmake.min.js" />
+    <Content Include="component\admin_component\vendors\datatable\js\vfs_fonts.js" />
+    <Content Include="component\admin_component\vendors\datepicker\date-picker.css" />
+    <Content Include="component\admin_component\vendors\datepicker\datepicker.custom.js" />
+    <Content Include="component\admin_component\vendors\datepicker\datepicker.en.js" />
+    <Content Include="component\admin_component\vendors\datepicker\datepicker.js" />
+    <Content Include="component\admin_component\vendors\drag\dragable_sortable.js" />
+    <Content Include="component\admin_component\vendors\drag\jquery.ui.min.js" />
+    <Content Include="component\admin_component\vendors\drag\sortable-custom.js" />
+    <Content Include="component\admin_component\vendors\font_awesome\css\all.min.css" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-brands-400.html" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-regular-400.html" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-solid-900.html" />
+    <Content Include="component\admin_component\vendors\gijgo\gijgo.min.css" />
+    <Content Include="component\admin_component\vendors\jquery-sparkline\jquery.sparkline.min.js" />
+    <Content Include="component\admin_component\vendors\jquery-sparkline\spactkine_init.js" />
+    <Content Include="component\admin_component\vendors\mapJs\custom.js" />
+    <Content Include="component\admin_component\vendors\mapJs\mapsjs-core.js" />
+    <Content Include="component\admin_component\vendors\mapJs\mapsjs-mapevents.js" />
+    <Content Include="component\admin_component\vendors\mapJs\mapsjs-ui.css" />
+    <Content Include="component\admin_component\vendors\mapJs\mapsjs-ui.js" />
+    <Content Include="component\admin_component\vendors\mapJs\mapsjs_service.js" />
+    <Content Include="component\admin_component\vendors\material_icon\material-icons.css" />
+    <Content Include="component\admin_component\vendors\morris\morris.css" />
+    <Content Include="component\admin_component\vendors\niceselect\css\nice-select.css" />
+    <Content Include="component\admin_component\vendors\niceselect\js\jquery.nice-select.min.js" />
+    <Content Include="component\admin_component\vendors\nvd3\d3.min.js" />
+    <Content Include="component\admin_component\vendors\nvd3\layers.js" />
+    <Content Include="component\admin_component\vendors\nvd3\nv.d3.js" />
+    <Content Include="component\admin_component\vendors\owl_carousel\css\owl.carousel.css" />
+    <Content Include="component\admin_component\vendors\owl_carousel\css\owl.video.play.html" />
+    <Content Include="component\admin_component\vendors\owl_carousel\js\owl.carousel.min.js" />
+    <Content Include="component\admin_component\vendors\photoswip\photoswipe-ui-default.min.js" />
+    <Content Include="component\admin_component\vendors\photoswip\photoswipe.js" />
+    <Content Include="component\admin_component\vendors\photoswip\photoswipe.min.js" />
+    <Content Include="component\admin_component\vendors\progressbar\jquery.barfiller.js" />
+    <Content Include="component\admin_component\vendors\scroll\perfect-scrollbar.min.js" />
+    <Content Include="component\admin_component\vendors\scroll\scrollable-custom.js" />
+    <Content Include="component\admin_component\vendors\scroll\scrollable.css" />
+    <Content Include="component\admin_component\vendors\scroll_reval\modernizr.js" />
+    <Content Include="component\admin_component\vendors\scroll_reval\reveal-custom.js" />
+    <Content Include="component\admin_component\vendors\scroll_reval\scrollreveal.min.js" />
+    <Content Include="component\admin_component\vendors\select2\css\select2.min.html" />
+    <Content Include="component\admin_component\vendors\swiper_slider\css\swiper.min.html" />
+    <Content Include="component\admin_component\vendors\tagsinput\tagsinput.css" />
+    <Content Include="component\admin_component\vendors\tagsinput\tagsinput.js" />
+    <Content Include="component\admin_component\vendors\text_editor\summernote-bs4.css" />
+    <Content Include="component\admin_component\vendors\text_editor\summernote-bs4.js" />
+    <Content Include="component\admin_component\vendors\themefy_icon\fonts\themify9f24.svg" />
+    <Content Include="component\admin_component\vendors\themefy_icon\themify-icons.css" />
+    <Content Include="component\admin_component\vendors\vectormap-home\vectormap-2.0.2.css" />
+    <Content Include="component\admin_component\vendors\vectormap-home\vectormap-2.0.2.min.js" />
+    <Content Include="component\admin_component\vendors\vectormap-home\vectormap-world-mill-en.js" />
+    <Content Include="component\admin_component\vendors\verctorMap\jvectormap-2.0.2.min.js" />
+    <Content Include="component\admin_component\vendors\verctorMap\jvectormap-asia-mill.js" />
+    <Content Include="component\admin_component\vendors\verctorMap\jvectormap-au-mill.js" />
+    <Content Include="component\admin_component\vendors\verctorMap\jvectormap-chicago-mill-en.js" />
+    <Content Include="component\admin_component\vendors\verctorMap\jvectormap-in-mill.js" />
+    <Content Include="component\admin_component\vendors\verctorMap\jvectormap-uk-mill-en.js" />
+    <Content Include="component\admin_component\vendors\verctorMap\jvectormap-us-aea-en.js" />
+    <Content Include="component\admin_component\vendors\verctorMap\jvectormap-world-mill-en.js" />
+    <Content Include="component\admin_component\vendors\verctorMap\map-vector.js" />
+    <Content Include="component\admin_component\vendors\verctorMap\vector-map.css" />
+    <Content Include="component\admin_component\vendors\webticker\jquery.webticker.min.js" />
+    <Content Include="component\Crud-Ajax.js" />
+    <Content Include="component\img\about\about1.jpg" />
+    <Content Include="component\img\about\about2.jpg" />
+    <Content Include="component\img\about\about3.jpg" />
+    <Content Include="component\img\android-chrome-192x192.png" />
+    <Content Include="component\img\android-chrome-512x512.png" />
+    <Content Include="component\img\apple-touch-icon.png" />
+    <Content Include="component\img\bg1.jpg" />
+    <Content Include="component\img\bg2.jpg" />
+    <Content Include="component\img\bg3.jpeg" />
+    <Content Include="component\img\bg4.jpg" />
+    <Content Include="component\img\bg5.jpg" />
+    <Content Include="component\img\bg6.jpg" />
+    <Content Include="component\img\bg7.jpg" />
+    <Content Include="component\img\bitebuzz2.png" />
+    <Content Include="component\img\bitebuzz3.png" />
+    <Content Include="component\img\favicon-16x16.png" />
+    <Content Include="component\img\favicon-32x32.png" />
+    <Content Include="component\img\favicon.ico" />
+    <Content Include="component\img\food\bg1.jpg" />
+    <Content Include="component\img\food\menu.png" />
+    <Content Include="component\img\food\non veg\n1.jpg" />
+    <Content Include="component\img\food\non veg\n2.jpg" />
+    <Content Include="component\img\food\non veg\n3.jpg" />
+    <Content Include="component\img\food\non veg\n4.jpg" />
+    <Content Include="component\img\food\non veg\n5.jpg" />
+    <Content Include="component\img\food\non veg\n6.jpg" />
+    <Content Include="component\img\food\non veg\n7.jpg" />
+    <Content Include="component\img\food\non veg\n8.jpg" />
+    <Content Include="component\img\food\non veg\n9.jpg" />
+    <Content Include="component\img\food\veg\v1.jpg" />
+    <Content Include="component\img\food\veg\v10.jpg" />
+    <Content Include="component\img\food\veg\v2.jpg" />
+    <Content Include="component\img\food\veg\v3.jpg" />
+    <Content Include="component\img\food\veg\v4.jpg" />
+    <Content Include="component\img\food\veg\v5.jpg" />
+    <Content Include="component\img\food\veg\v6.jpg" />
+    <Content Include="component\img\food\veg\v7.jpg" />
+    <Content Include="component\img\food\veg\v8.jpg" />
+    <Content Include="component\img\food\veg\v9.jpg" />
+    <Content Include="component\img\logo1.jpg" />
+    <Content Include="component\img\logo2.jfif" />
+    <Content Include="component\img\logo3.png" />
+    <Content Include="component\img\pic1.jpg" />
+    <Content Include="component\img\pic2.jpg" />
+    <Content Include="component\img\pic3.jpg" />
+    <Content Include="component\img\pic4.jpg" />
+    <Content Include="component\img\services\bg1.jpg" />
+    <Content Include="component\img\services\bg2.jpg" />
+    <Content Include="component\img\services\bg3.jpg" />
+    <Content Include="component\img\services\bg4.jpg" />
+    <Content Include="component\img\services\bg5.jpg" />
+    <Content Include="component\img\services\bg6.jpg" />
+    <Content Include="component\img\services\delivery.jpg" />
+    <Content Include="component\img\services\dine.jpg" />
+    <Content Include="component\img\services\logo1.png" />
+    <Content Include="component\img\services\take.jpg" />
+    <Content Include="component\media-queries.css" />
+    <Content Include="component\notify.js" />
+    <Content Include="component\notify.min.js" />
+    <Content Include="component\style.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\WebController.cs" />
+    <Compile Include="FoodData.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodData.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdminLoginModel.cs" />
+    <Compile Include="Models\AllCategoryModel.cs" />
+    <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\CityModel.cs" />
+    <Compile Include="Models\DistrictModel.cs" />
+    <Compile Include="Models\FoodModel.cs" />
+    <Compile Include="Models\LoadDataModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\OrderDetailsModel.cs" />
+    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="Models\ResponseModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AddUserViewModel.cs" />
+    <Compile Include="ViewModel\AdminViewModel.cs" />
+    <Compile Include="ViewModel\CartViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MenuViewModel.cs" />
+    <Compile Include="ViewModel\OrderViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="component\img\food\b1.jpg!d" />
+    <Content Include="component\img\logo3.webp" />
+    <Content Include="component\img\site.webmanifest" />
+    <Content Include="FoodData.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>FoodData.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-brands-400.eot" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-brands-400.woff" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-brands-400d41d.eot" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-regular-400.eot" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-regular-400.woff" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-regular-400d41d.eot" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-solid-900.eot" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-solid-900.woff" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="component\admin_component\vendors\font_awesome\webfonts\fa-solid-900d41d.eot" />
+    <Content Include="component\admin_component\vendors\material_icon\material-icons.woff" />
+    <Content Include="component\admin_component\vendors\material_icon\MaterialIcons-Regular.ttf" />
+    <Content Include="component\admin_component\vendors\text_editor\fonts\summernote.eot" />
+    <Content Include="component\admin_component\vendors\text_editor\fonts\summernote.ttf" />
+    <Content Include="component\admin_component\vendors\text_editor\fonts\summernote.woff" />
+    <Content Include="component\admin_component\vendors\themefy_icon\fonts\themify9f24.eot" />
+    <Content Include="component\admin_component\vendors\themefy_icon\fonts\themify9f24.ttf" />
+    <Content Include="component\admin_component\vendors\themefy_icon\fonts\themify9f24.woff" />
+    <Content Include="component\admin_component\vendors\themefy_icon\fonts\themifyd41d.eot" />
+    <None Include="FoodData.dbml.layout">
+      <DependentUpon>FoodData.dbml</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\_LayoutPagewebsite.cshtml" />
+    <Content Include="Views\Web\Index.cshtml" />
+    <Content Include="Views\Web\Menu.cshtml" />
+    <Content Include="Views\Web\Services.cshtml" />
+    <Content Include="Views\Web\Cart.cshtml" />
+    <Content Include="Views\Web\About.cshtml" />
+    <Content Include="Views\Web\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutPageAdmin.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\District.cshtml" />
+    <Content Include="Views\Admin\City.cshtml" />
+    <Content Include="Views\Admin\Product.cshtml" />
+    <Content Include="Views\Admin\User_Details.cshtml" />
+    <Content Include="Views\Web\Register.cshtml" />
+    <Content Include="Views\Admin\AdminLogin.cshtml" />
+    <Content Include="Views\Web\Orders.cshtml" />
+    <Content Include="Views\Admin\Orders.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="user_images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53298</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53298/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

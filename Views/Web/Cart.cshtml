@@ -1,0 +1,132 @@
+﻿@model FoodDeliveryApplication.Models.CartModel
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_LayoutPagewebsite.cshtml";
+}
+
+
+    <section id="details">
+        <div class="container-fluid mt-5">
+            <div class="row" id="1">
+                <div class="col-md-12 mt-5">
+                    <div class="card" style="background:#69e2e1">
+                        <div class="card-body" id="tab">
+                            <h3>Cart</h3>
+                               <br>
+                                        <div class="col-md-12">
+                                            <table id="cartTable" class="display" style="background-color:red">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sno.</th>
+                                                        <th>Item Name</th>
+                                                        <th>Price</th>
+                                                        <th>Quantity</th>
+                                                        <th>Amount</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                      <div>
+                                          @Html.HiddenFor(model => model.cartId)
+                                      </div>
+                                      <div class="col-md-5">
+                                          <a href="@Url.Action("SavetoOrders", "Web")" onclick="displayAlert()" class="btn btn-success">Order</a>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br /><br />
+                        
+                    </div>
+    </section>
+                <!-- Include jQuery -->
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+                <!-- Include DataTables -->
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+                <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+                <script>
+                    $(document).ready(function () {
+                        CartList();
+
+                    });
+                    var DataTable = null;
+                    function CartList() {
+                        DataTable = $("#cartTable").DataTable({ // Correct capitalization
+                            destroy: true,
+                            "ajax": {
+                                "type": "GET",
+                                "url": "/Web/GetCartList",
+                                "datatype": "json"
+                            },
+                            "columns": [
+                                {
+                                    "render": function (data, type, full, meta) {
+                                        return meta.row + 1
+                                    }
+                                },
+                                { "data": "productName" },
+                                { "data": "price" },
+                                { "data": "quantity" },
+                                { "data": "amount" },
+                                {
+                                    "data": "cartId", "render": function (data) {
+                                        return "<a class = 'btn btn-danger btn-xs' onclick = deleterow(" + data + ")> Delete </a>";
+                                    },
+                                    orderable: false
+                                },
+                            ],
+                            "language": {
+                                "emptyTable": "No Items in Cart!"
+                            },
+                        });
+                    }
+
+                    function deleterow(id) {
+                        if (confirm('Are You Sure you Want to delete ....?')) {
+                       
+                            $.ajax({
+                                type: "POST",
+                                url: '/Web/DeletefromCart/' + id,
+                                success: function (response) {
+                                    if (response.result == true) {
+                                        DataTable.ajax.reload();
+                                        Swal.fire({
+                                            position: "top-end",
+                                            icon: "success",
+                                            title: "Item deleted from cart",
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                    }
+                                    else {
+                                        DataTable.ajax.reload();
+                                    }
+                                },
+                                error: function (msg) {
+                                    alert(msg.responseText);
+                                }
+                            })
+                        }
+                    };
+                    function displayAlert() {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Orders Places sucessfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+
+
+                </script>
+
+
+
+

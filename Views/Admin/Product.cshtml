@@ -1,0 +1,151 @@
+﻿@model FoodDeliveryApplication.Models.FoodModel
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+
+<div class="main_content_iner overly_inner ">
+    <div class="container-fluid p-0 ">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+                    <div class="page_title_left">
+                        <h3 class="mb-0">Product</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="background:#69e2e1">
+                    <div class="card-body">
+                        <h3>Add Product</h3>
+                        <br>
+
+                        @using (Ajax.BeginForm("Product", "Admin", new AjaxOptions { OnSuccess = "Success", OnFailure = "Fail" }, new { id = "formsubmit", @class = "form-horizontal", enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="col-md-12">
+                                @*@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                @Html.DropDownListFor(model => model.Category, new List<SelectListItem>
+                               {
+                                   new SelectListItem() {Text = "Veg" },
+                                   new SelectListItem() {Text = "Non-veg" },
+                               }, "-Select Category-", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                            </div>
+                            <br />
+                            <div class="col-md-12">
+                                @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Enter Name" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <br />
+                            <div class="col-md-12">
+                                @*Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Enter Price" } })
+                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                            </div>
+                            <br />
+                            <div class="col-md-12">
+                                @*@Html.LabelFor(model => model.ImgPath, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <input type="file" name="ImgPath" class="form-control" placeholder="Upload Image" />
+                                @Html.ValidationMessageFor(model => model.ImgPath, "", new { @class = "text-danger" })
+                            </div>
+                            <br />
+                            <div class="col-md-12">
+                                <input type="hidden" name="id" value="">
+
+                                <button type="Submit" class="btn_1 full_width text-center" onclick="displayAlert()"
+                                        name="btn" value="Add">
+                                    Add
+                                </button>
+                                <button type="Reset" class="btn_1 full_width text-center"
+                                        name="btn" value="">
+                                    Reset
+                                </button>
+                            </div>
+                            @Html.ViewData["Message"]
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card" style="background:#69e2e1">
+                    <div class="card-body">
+                        <h3>Product List</h3>
+                        <br>
+                        <div class="col-md-10">
+                            <table id="foodTable" class="display">
+                                <thead>
+                                    <tr style="background-color:red">
+                                        <th>Sno.</th>
+                                        <th>Category</th>
+                                        <th>Item name</th>
+                                        @*<th>Img path</th>*@
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>                                    
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /><br />
+        <div class="col-md-5">
+            <a href="@Url.Action("Menu", "Web")" class="btn_1 full_width text-center">Back to menu</a>
+        </div>
+    </div>
+</div>
+
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include DataTables -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        AllProductLists();
+    });
+        var DataTable = null;
+        function AllProductLists() {
+            DataTable = $("#foodTable").DataTable({ // Correct capitalization
+                destroy: true,
+                "ajax": {
+                    "type": "GET",
+                    "url": "/Admin/GetProductLists",
+                    "datatype": "json"
+                },
+                "columns": [
+                    {
+                        "render": function (data, type, full, meta) {
+                            return meta.row + 1
+                        }
+                    },
+                    { "data": "Category" },
+                    { "data": "Name" },
+                    { "data": "Price" },
+                ],
+                "language": {
+                    "emptyTable": "Data not found"
+                }
+            });
+        }
+    function displayAlert() {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Product added sucessfully!!",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+    
+</script>

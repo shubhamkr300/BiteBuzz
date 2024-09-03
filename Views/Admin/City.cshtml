@@ -1,0 +1,191 @@
+﻿@model FoodDeliveryApplication.Models.CityModel
+@{
+    ViewBag.Title = "City";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<div class="main_content_iner overly_inner ">
+    <div class="container-fluid p-0 ">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+                    <div class="page_title_left">
+                        <h3 class="mb-0">City</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="background:#69e2e1">
+                    <div class="card-body">
+                        <h3>Add City</h3>
+                        <br>
+
+                        @using (Ajax.BeginForm("City", "Admin", new AjaxOptions { OnSuccess = "Success", OnFailure = "Fail" }, new { id = "formsubmit", @class = "form-horizontal", enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div>
+                                @Html.HiddenFor(model => model.cId)
+                            </div>
+
+                            <div class="col-md-12">
+                                @Html.DropDownListFor(model => model.dName, Model.districtList,
+                               "-select district-", new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Enter City" } })
+                            </div>
+                            <br />
+                            <div class="col-md-12">
+                                @*Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                @Html.EditorFor(model => model.cName, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Enter City" } })
+                                @Html.ValidationMessageFor(model => model.cName, "", new { @class = "text-danger" })
+                            </div>
+                            <br />
+                            <div class="col-md-12">
+                                @*<input type="hidden" name="id" value="">*@
+
+                                <button type="Submit" class="btn_1 full_width text-center" onclick="displayAlert()"
+                                        name="btn" value="Add">
+                                    Add
+                                </button>
+                                <button type="Reset" class="btn_1 full_width text-center"
+                                        name="btn" value="">
+                                    Reset
+                                </button>
+                            </div>
+                            @Html.ViewData["Message"]
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>City List</h3>
+                        <br>
+                        <div class="col-md-10">
+                            <table id="cityTable" class="display" style="background-color:red">
+                                <thead>
+                                    <tr>
+                                        <th>Sno.</th>
+                                        <th>District</th>
+                                        <th>City</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /><br />
+        <div class="col-md-5">
+            <a href="@Url.Action("Menu", "Web")" class="btn_1 full_width text-center">Back to menu</a>
+        </div>
+    </div>
+</div>
+
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include DataTables -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        AllCityLists();
+    });
+        var DataTable = null;
+        function AllCityLists() {
+            DataTable = $("#cityTable").DataTable({ // Correct capitalization
+                destroy: true,
+                "ajax": {
+                    "type": "GET",
+                    "url": "/Admin/GetCityLists",
+                    "datatype": "json"
+                },
+                "columns": [
+                    {
+                        "render": function (data, type, full, meta) {
+                            return meta.row + 1
+                        }
+                    },
+                    { "data": "dName" },
+                    { "data": "cName" },
+                    {
+                        "data": "cId", "render": function (data) {
+                            return "<a class = 'btn btn-primary btn-xs' onclick = editrow(" + data + ")> Edit </a> <a class = 'btn btn-danger btn-xs' onclick = deleterow(" + data + ")> Delete </a>";
+                        },
+                        orderable: false
+                    },
+
+                ],
+                "language": {
+                    "emptyTable": "Data not found"
+                }
+            });
+        }
+
+    function Cleartxt() {
+        $("#cId").val('');
+        $("#dName").val('');
+        $("#cName").val('');
+    }
+
+    function editrow(id) {
+        $.ajax({
+            type: "POST",
+            url: '/Admin/EditCity/' + id,
+            success: function (res) {
+                $("#cId").val(id);
+                $("#dName").val(res.dName);
+                $("#cName").val(res.cName);
+            },
+            error: function (msg) {
+                alert(msg.responseText);
+            }
+        })
+    };
+
+    function deleterow(id) {
+        if (confirm('Are You Sure you Want to delete This record....?')) {
+            $.ajax({
+                type: "POST",
+                url: '/Admin/DeleteCity/' + id,
+                success: function (response) {
+                    if (response.result == true) {
+                        DataTable.ajax.reload();
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "City deleted sucessfully!",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                    else {
+                        DataTable.ajax.reload();
+                    }
+                },
+                error: function (msg) {
+                    alert(msg.responseText);
+                }
+            })
+        }
+    };
+
+    function displayAlert() {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "City updated sucessfully",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+</script>
+
+

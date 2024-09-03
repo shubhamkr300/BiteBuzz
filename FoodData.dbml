@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FoodDb" Class="FoodDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="Name" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Userid" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserDetails" Member="UserDetails">
+    <Type Name="UserDetail">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Association Name="UserDetail_cartDetail" Member="cartDetails" ThisKey="UserId" OtherKey="User_Id" Type="cartDetail" />
+      <Association Name="UserDetail_tblOrder" Member="tblOrders" ThisKey="UserId" OtherKey="User_Id" Type="tblOrder" />
+    </Type>
+  </Table>
+  <Table Name="dbo.foodDetails" Member="foodDetails">
+    <Type Name="foodDetail">
+      <Column Name="fid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Category" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="ImgPath" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Association Name="foodDetail_cartDetail" Member="cartDetails" ThisKey="fid" OtherKey="Product_Id" Type="cartDetail" />
+      <Association Name="foodDetail_tblOrder" Member="tblOrders" ThisKey="fid" OtherKey="fid" Type="tblOrder" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cartDetails" Member="cartDetails">
+    <Type Name="cartDetail">
+      <Column Name="Cart_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="User_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Product_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="foodDetail_cartDetail" Member="foodDetail" ThisKey="Product_Id" OtherKey="fid" Type="foodDetail" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="UserDetail_cartDetail" Member="UserDetail" ThisKey="User_Id" OtherKey="UserId" Type="UserDetail" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDistrict" Member="tblDistricts">
+    <Type Name="tblDistrict">
+      <Column Name="d_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="state" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="dName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblCity" Member="tblCities">
+    <Type Name="tblCity">
+      <Column Name="c_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="cName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblOrders" Member="tblOrders">
+    <Type Name="tblOrder">
+      <Column Name="Oid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="User_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="foodDetail_tblOrder" Member="foodDetail" ThisKey="fid" OtherKey="fid" Type="foodDetail" IsForeignKey="true" />
+      <Association Name="UserDetail_tblOrder" Member="UserDetail" ThisKey="User_Id" OtherKey="UserId" Type="UserDetail" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

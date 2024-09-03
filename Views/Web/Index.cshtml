@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutPagewebsite.cshtml";
+}
+
+<section id="home">
+    <h1 class="h-primary">Welocome to My Online Meal</h1>
+    <p>"We provide best food catering and dinein services.You can either dinein in the resturant or can order your delicious meal online."</p>
+    <p>Please proceed to order food online...</p>
+    @*<a href="login.html" class="btn">Order Now</a>*@
+</section>
+<section class="services-container">
+    <h1 class="h-primary center">Our Services</h1>
+    <div id="services">
+        <div class="box">
+            <img src="~/component/img/pic1.jpg" alt="">
+            <h2 class="h-secondary center">Food Catering</h2>
+            <p class="center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, ad fugiat dolores aspernatur delectus molestiae minima possimus natus nam a ullam corporis, maiores temporibus excepturi quibusdam repudiandae ipsam consequatur minus dolorem culpa eaque voluptates.</p>
+        </div>
+        <div class="box">
+            <img src="~/component/img/pic2.jpg" alt="">
+            <h2 class="h-secondary center">Bulk Ordering</h2>
+            <p class="center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, ad fugiat dolores aspernatur delectus molestiae minima possimus natus nam a ullam corporis, maiores temporibus excepturi quibusdam repudiandae ipsam consequatur minus dolorem culpa eaque voluptates.</p>
+        </div>
+        <div class="box">
+            <img src="~/component/img/pic4.jpg" alt="">
+            <h2 class="h-secondary center">Food Ordering</h2>
+            <p class="center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, ad fugiat dolores aspernatur delectus molestiae minima possimus natus nam a ullam corporis, maiores temporibus excepturi quibusdam repudiandae ipsam consequatur minus dolorem culpa eaque voluptates.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <h1 class="text-info text-center">About us</h1>                
+            </div>
+            <div class="col-md-6">
+                <img src="~/component/img/about/about1.jpg" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <p style="text-align: justify;">
+                    Bite Buzz is a popular online platform and mobile app that provides users with a comprehensive service for discovering restaurants, ordering food online, making table reservations, and reading customer reviews. Founded in 2008 in India, Bite Buzz has grown to become a global brand, operating in multiple countries.
+                    Bite Buzz provides a food delivery service where users can order from a wide range of restaurants and have the food delivered to their doorstep. The app offers real-time tracking of orders and various payment options.
+                    <button class="btn btn-sm btn-success">More</button>
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<h6 style="color:brown">@Session["userId"]</h6>
+<section id="client-section">
+    <h1 class="h-primary center">Our Clients</h1>
+    <div id="clients">
+        <div class="client-item">
+            <img src="~/component/img/logo2.jfif">
+        </div>
+        <div class="client-item">
+            <img src="~/component/img/logo3.png">
+        </div>
+        <div class="client-item">
+            
+        </div>
+    </div>
+</section>
+

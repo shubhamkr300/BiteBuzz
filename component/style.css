@@ -1,0 +1,373 @@
+@charset "UTF-8";
+
+/*css Reset*/
+*{
+    margin:0;
+    padding: 0;
+}
+
+/*CSS Variables*/
+:root{
+    --navbar-height:59px;
+}
+
+/* Navigation Bar */
+#navbar{
+    position:absolute;
+}
+
+#navbar{
+    display: flex;
+    align-items: center;
+}
+#navbar::before{
+    content: "";
+    background-color: black;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+/* Logo and Image */
+#logo{
+    margin: 9px 22px;
+}
+
+#logo img{
+    height: 60px;
+    margin: 5px 5px;
+}
+
+/* Navigation Bar : List Styling  */
+#navbar ul{
+    display: flex;
+}
+
+
+
+#navbar ul li{
+    list-style: none;
+    font-size: 1.3rem;
+}
+
+#navbar ul li a{
+    color: white;
+    display: block;
+    padding: 3px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-family: 'Bree Serif', serif;
+}
+
+#navbar ul li a:hover{
+    color: black;
+    background-color: white;
+}
+
+/*Services */
+#nav{
+    background:green;
+}
+#nav ul{
+    display: flex;
+}
+
+#nav ul li{
+    list-style: none;
+    font-size: 1.3rem;
+}
+
+#nav ul li a{
+    color: black;
+    display: block;
+    padding: 3px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-family: 'Bree Serif', serif;
+}
+
+#nav ul li a:hover{
+    color: green;
+    background-color: white;
+}
+
+.nav-toggle{
+    display: none;
+}
+
+/*#log {
+    margin-left: 300px;
+}*/
+
+/* Hoome Section */
+#home{
+    display: flex;
+    flex-direction: column;
+    padding: 3px 200px;
+    height: 570px;
+    justify-content: center;
+    align-items: center;
+}
+
+#home::before{
+     content: "";
+     position:absolute;
+     background: url('img/bg1.jpg') no-repeat center center/cover;
+     top: 0px;
+     left: 0px;
+     height: 100%;
+     width: 100%;
+     z-index: -1;
+     opacity: 0.89;
+}
+
+#home h1{
+    color: white;
+    text-align: center;
+    font-family: 'Bree Serif', serif;
+}
+
+#home p{
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Bree Serif', serif;
+}
+
+/*Menu Section*/
+#Add-to-cart .button{
+    padding: 6px 20px;
+    border: 2px solid black;
+    background-color: yellow;
+    color: black;
+    margin: 17px;
+    font-size: 1.5rem;
+    border-radius: 9px;
+    border-style: double;
+}
+
+/* Services Section */
+#services{
+    margin: 34px;
+    display: flex;
+}
+#services .box{
+    border: 2px solid brown;
+    padding: 34px;
+    margin: 3px 6px;
+    border-radius: 23px;
+    background-color: #dbd3d3;
+    
+}
+
+#services .box img{
+    height: 150px;
+    margin: auto;
+    display: block;
+}
+
+
+
+/* Utility Classes */
+.h-primary{
+    font-size: 3rem;
+    padding: 22px;
+    font-family: 'Bree Serif', serif;
+}
+
+.h-secondary{
+    font-size: 2rem;
+    padding: 12px;
+    font-family: 'Bree Serif', serif;
+}
+
+.btn{
+   padding: 6px 20px; 
+   border: 2px solid white;
+   background-color: brown;
+   color: white;
+   margin: 17px;
+   font-size: 1.5rem;
+   border-radius: 9px;
+   cursor: pointer;
+}
+
+.center{
+    text-align: center;
+}
+
+
+
+/* Client Section */
+#client-section{
+   height: 344px;
+   position: relative;
+}
+
+#client-section::before{
+    content: "";
+    position: absolute;
+    background: url('img/bg2.jpg') no-repeat center center/cover;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+#clients{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#client-item{
+    padding: 34px;
+}
+
+#clients img{
+    height: 125px;
+}
+
+/* homepage  */
+#food_table{
+    padding-top: 130px;
+    background-image: url("img/bg4.jpg");
+}
+#tab img{
+    height: 267px;
+    width:100%;
+    padding-bottom: 50px;
+}
+
+#tab {
+    width: 100%;
+}
+
+
+/* signup  */
+#form {
+	 padding-top: 130px;
+    background-image: url("img/bg3.jpg");
+}
+
+ /* #food {
+      padding-top: 170px;
+  }  */
+  
+  #1#2#3#4#5#6#7#8#9{
+     padding-top: 170px;
+  }
+
+  #desc {
+    padding-top: 130px;
+  }
+  
+  #desc h2{
+    font-family: 'Bree Serif', serif;
+  }
+  #desc p{
+    font-size: large;
+    font-family: 'Bree Serif', serif;
+  }
+
+  #details::before{
+    content: "";
+    position:absolute;
+    background-color:#c7c787;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.89;
+  } 
+
+  #details img{
+    height: 450px;
+    width: 100%;
+  }
+
+  
+  #details {
+     display: flex;
+    flex-direction: column;
+    padding: 3px 200px;
+    height: 570px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 120px;
+  }
+  
+  #details td{
+    font-size: 1.5rem;
+    font-family: 'Bree Serif', serif;
+  }
+  
+  #details h3{
+    font-size:2.5rem;
+    font-family: 'Bree Serif', serif;
+    text-decoration:Underline;
+  }
+
+  #details desc{
+    padding-left: 50px;
+    padding-top: 100px;
+  }
+
+  #register {
+    padding-top: 150px;
+  }
+
+  #signup {
+    align-items: center;
+    justify-content: center;
+    background:url('img/bg5.jpg') no-repeat center center/cover;
+  }
+
+  #signup label{
+    font-family: 'Bree Serif', serif;
+    font-size: large;
+  }
+
+  #login {
+    align-items: center;
+    justify-content: center;
+    background:url('./img/services/bg6.jpg') no-repeat center center/cover;
+    height: 720px;
+    width: 100%;
+  }
+
+  #login label{
+    font-family: 'Bree Serif', serif;
+    font-size: large;
+  }
+
+  /*Menu */
+/*#wrapper{
+    height: 120px;
+    min-width: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: yellow;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+#wrapper span{
+        width: 100%;
+        text-align: center;
+        font-size: 55px;
+        font-weight: 600;
+}*/
+/*
+#wrapper span{
+    font-size: 50px;
+    border-right: 2px solid rgba(0,0,0,0.2);
+    border-left: 2px solid rgba(0,0,0,0.2);
+}*/
+ 

@@ -1,0 +1,108 @@
+﻿@model List<FoodDeliveryApplication.Models.FoodModel>
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_LayoutPagewebsite.cshtml";
+}
+
+<body style="background-image: url('~/component/img/food/b1.jpg!d'); background-size: contain;">
+
+    @using (Ajax.BeginForm("Menu", "Web", new AjaxOptions { OnSuccess = "Success", OnFailure = "Fail" }, new { id = "formsubmit", @class = "form-horizontal", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <section>
+            <div class="container-fluid mt-5">
+                <div class="row">
+                    <div class="col-md-12 mt-5">
+                        <div class="col-md-12 mb-5 text-center">
+                            <img src="~/component/img/food/menu.png">
+                        </div>
+                        <h1 class="text-info text-center">VEG ITEMS<hr style="height: 10px;color: blue"></h1>
+                    </div>
+
+                    @foreach (var item in Model)
+                    {
+                      
+
+                        string qid = "cqty" + item.fid;
+
+                        <div class="col-md-4 col-sm-6 mb-5">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <img src="@Url.Content(item.getImage)" class="card-img-top" height="270px">
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">@item.Name</h5>
+
+                                        <div class="wrapper">
+                                            <span class="minus" data-fid="@item.fid">-</span>
+                                            <input type="number" class="value" id="@qid" data-fid="@item.fid" value="1">
+                                            <span class="plus" data-fid="@item.fid">+</span>
+                                        </div>
+
+                                        <div class="col-md-12 col-sm-12 mb-2 text-center">
+                                            <button type="button" onclick="AddToCart('@item.fid')" class="btn btn-warning">
+                                                Add to Cart
+                                            </button>
+                                            @Html.ViewData["Message"]
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    }
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Increment quantity
+            $('.plus').click(function () {
+                const input = $(this).prev();
+                if (input.val() < 20) {
+                    input.val(+input.val() + 1);
+                }
+            });
+
+            // Decrement quantity
+            $('.minus').click(function () {
+                const input = $(this).next();
+                if (input.val() > 1) {
+                    input.val(+input.val() - 1);
+                }
+            });
+        });
+
+        function AddToCart(fid) {
+            const quantity = $(`input[data-fid="${fid}"]`).val();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Menu", "Web")',
+                data: { fid: fid, quantity: quantity },
+                success: function (response) {
+                    // Handle success response
+                    /*alert(response.result);*/
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: response.result,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                },
+                error: function () {
+                    // Handle error response
+                    alert('An error occurred while adding to the cart.');
+                }
+            });
+        }
+    </script>
+
+</body>
